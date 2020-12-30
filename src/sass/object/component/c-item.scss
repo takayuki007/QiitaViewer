@@ -1,0 +1,10 @@
+//リストアイテム部分
+.c-item{
+  width: 49%;
+  background: $white;
+  margin-top: $margin-s;
+  height: 76px;
+  box-shadow: 2px 2px 4px $gray;
+  box-sizing: border-box;
+  padding: $padding-s;
+}

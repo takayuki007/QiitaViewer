@@ -1,0 +1,13 @@
+//ボタン部分
+.c-btn{
+  background: $light-blue;
+  color: $white;
+  border: none;
+  width: 100%;
+  height: 36px;
+
+  &:hover{
+    cursor: pointer;
+    opacity: .75;
+  }
+}

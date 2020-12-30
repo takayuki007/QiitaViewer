@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background: #F6F6F4; }
+
+.l-header {
+  width: 100%;
+  height: 56px;
+  background: #32BAFF; }
+
+.l-mainColumn {
+  width: 70%;
+  box-sizing: border-box;
+  padding-right: 24px; }
+
+.l-sideColumn {
+  width: 30%;
+  box-sizing: border-box;
+  padding-left: 24px; }
+
+.c-logo {
+  color: #FFFFFF;
+  line-height: 56px;
+  font-size: 28px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold; }
+
+.c-listItem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%; }
+
+.c-item {
+  width: 49%;
+  background: #FFFFFF;
+  margin-top: 16px;
+  height: 76px;
+  box-shadow: 2px 2px 4px #999999;
+  box-sizing: border-box;
+  padding: 16px; }
+
+.c-link {
+  text-decoration: none;
+  font-family: 'Noto Sans JP', sans-serif; }
+  .c-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: .75; }
+
+.c-site-width {
+  width: 980px;
+  margin: 0 auto; }
+
+.c-wrapper {
+  margin-top: 40px; }
+
+.c-searchForm {
+  background: #32BAFF;
+  width: 840px;
+  height: 240px;
+  margin: 0 auto;
+  border-radius: 7px;
+  padding-left: 40px;
+  padding-top: 60px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 8px #999999; }
+
+.c-regularText {
+  font-size: 16px;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5em; }
+
+.c-inputArea {
+  background: #FFFFFF;
+  height: 32px;
+  width: 320px;
+  margin-top: 16px;
+  border-radius: 3px;
+  padding-left: 8px;
+  box-sizing: border-box;
+  margin-bottom: 24px; }
+
+.c-inputText {
+  border: none;
+  width: 90%;
+  height: 94%; }
+
+.c-smallText {
+  font-size: 12px;
+  font-family: "Noto Sans JP", sans-serif; }
+
+.c-heading {
+  font-size: 20px;
+  color: #32BAFF;
+  border-bottom: solid 2px #32BAFF;
+  height: 24px;
+  width: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+  margin-bottom: 24px; }
+
+.c-articleTitle {
+  margin-top: 16px; }
+
+.c-articleArea {
+  background: #FFFFFF;
+  width: 100%;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  height: auto; }
+
+.c-title {
+  font-size: 24px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold; }
+
+.c-titleText {
+  font-size: 32px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 32px; }
+
+.c-postForm {
+  background: #FFFFFF;
+  width: 100%;
+  height: 240px;
+  box-sizing: border-box;
+  padding: 40px;
+  box-shadow: 2px 2px 4px #999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.c-btn {
+  background: #32BAFF;
+  color: #FFFFFF;
+  border: none;
+  width: 100%;
+  height: 36px; }
+  .c-btn:hover {
+    cursor: pointer;
+    opacity: .75; }
+
+.p-article-link {
+  font-size: 16px;
+  color: #0066FF;
+  font-weight: bold; }
+
+.p-header-link {
+  line-height: 56px;
+  font-size: 28px;
+  color: #FFFFFF; }
+
+.p-header-item {
+  margin-left: 16px; }
+
+.p-header-listItem {
+  display: flex; }
+
+.p-smallText-gray {
+  color: #999999; }
+
+.p-textWhite {
+  color: #FFFFFF; }
+
+.u-wrapper {
+  display: flex;
+  justify-content: space-between; }
+
+.u-smallText {
+  color: #FFFFFF; }
+
+.u-flex {
+  display: flex; }

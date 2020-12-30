@@ -1,0 +1,13 @@
+//検索フォーム
+.c-searchForm{
+  background: $light-blue;
+  width: 840px;
+  height: 240px;
+  margin: 0 auto;
+  border-radius: 7px;
+  padding-left: $padding-ll;
+  padding-top: 60px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 8px $gray;
+}

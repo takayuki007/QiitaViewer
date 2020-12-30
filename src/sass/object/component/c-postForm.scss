@@ -1,0 +1,13 @@
+//マイページ記事投稿部分
+.c-postForm{
+  background: $white;
+  width: 100%;
+  height: 240px;
+  box-sizing: border-box;
+  padding: $padding-ll;
+  box-shadow: 2px 2px 4px $gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //align-items: center;
+}

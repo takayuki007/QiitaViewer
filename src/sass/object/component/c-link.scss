@@ -1,0 +1,11 @@
+//リンク部分
+.c-link{
+  text-decoration: none;
+  font-family: 'Noto Sans JP', sans-serif;
+
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: .75;
+  }
+}

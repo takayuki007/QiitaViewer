@@ -1,0 +1,10 @@
+//見出し部分
+.c-heading{
+  font-size: $font-size-l;
+  color: $light-blue;
+  border-bottom: solid 2px $light-blue;
+  height: 24px;
+  width: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+  margin-bottom: $margin-m;
+}
