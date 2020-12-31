@@ -1,4 +1,8 @@
 //TOPページ記事タイトル
 .c-articleTitle{
   margin-top: $margin-s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
 }

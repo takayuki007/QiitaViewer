@@ -17,48 +17,61 @@
         </div>
     </header>
 
-    <main class="l-main c-site-width">
+    <main class="l-main c-site-width" id="app">
         <div class="c-wrapper">
-            <form action="" class="c-searchForm" method="get">
+            <div class="c-searchForm">
                 <p class="c-title p-textWhite">Get Qiita's Article</p>
                 <div class="c-inputArea">
                     <i class="fas fa-search"></i>
-                    <input type="text" class="c-inputText" value="" placeholder="ここにユーザーIDを入力">
+                    <input type="text" class="c-inputText" v-model="userID" placeholder="ここにユーザーIDを入力">
+                    <p class="c-errorText" v-show="message">{{ message }}</p>
                 </div>
+                <button class="u-btn" v-on:click="requestQiitaApi">検索</button>
                 <p class="c-smallText u-smallText">ユーザーIDでQiitaの記事を検索できます。</p>
-            </form>
+            </div>
         </div>
 
+
         <div class="c-wrapper">
-            <h2 class="c-heading">検索結果</h2>
-            <ul class="c-listItem">
-                <li class="c-item">
-                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>
+            <ul class="c-listItem"  v-if="datas.length">
+                <h2 class="c-heading">検索結果</h2>
+                <li class="c-item" v-for="data in datas">
+                    <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>
                     <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>
+                        <a v-bind:href="data['url']" class="c-link p-article-link" target="_blank">{{ data['title']}}</a>
                     </h3>
                 </li>
-                <li class="c-item">
-                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
-                <li class="c-item">
-                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
-                <li class="c-item">
-                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText p-smallText-gray">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link p-article-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
+            </ul>
+            <ul class="c-listItem"  v-if="datas.length === 0">
+                <h2 class="c-heading">検索結果</h2>
+                <p class="regularText">このユーザーは存在しません。</p>
             </ul>
         </div>
     </main>
     <script src="dist/js/bundle.js"></script>
 </body>
 </html>
+<!--<script>-->
+<!--    import SearchComponent from "./src/js/components/searchComponent";-->
+<!--    export default {-->
+<!--        components: {SearchComponent}-->
+<!--    }-->
+<!--</script>-->

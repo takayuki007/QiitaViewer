@@ -81,7 +81,7 @@ body {
   width: 49%;
   background: #FFFFFF;
   margin-top: 16px;
-  height: 76px;
+  height: 84px;
   box-shadow: 2px 2px 4px #999999;
   box-sizing: border-box;
   padding: 16px; }
@@ -100,6 +100,8 @@ body {
 
 .c-wrapper {
   margin-top: 40px; }
+  .c-wrapper:last-child {
+    margin-bottom: 60px; }
 
 .c-searchForm {
   background: #32BAFF;
@@ -108,8 +110,8 @@ body {
   margin: 0 auto;
   border-radius: 7px;
   padding-left: 40px;
-  padding-top: 60px;
-  padding-bottom: 48px;
+  padding-top: 40px;
+  padding-bottom: 44px;
   box-sizing: border-box;
   box-shadow: 4px 4px 8px #999999; }
 
@@ -121,17 +123,18 @@ body {
 .c-inputArea {
   background: #FFFFFF;
   height: 32px;
-  width: 320px;
+  width: 340px;
   margin-top: 16px;
   border-radius: 3px;
   padding-left: 8px;
   box-sizing: border-box;
-  margin-bottom: 24px; }
+  margin-bottom: 32px; }
 
 .c-inputText {
   border: none;
   width: 90%;
-  height: 94%; }
+  height: 94%;
+  margin-bottom: 8px; }
 
 .c-smallText {
   font-size: 12px;
@@ -147,7 +150,10 @@ body {
   margin-bottom: 24px; }
 
 .c-articleTitle {
-  margin-top: 16px; }
+  margin-top: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .c-articleArea {
   background: #FFFFFF;
@@ -189,6 +195,10 @@ body {
     cursor: pointer;
     opacity: .75; }
 
+.c-errorText {
+  color: #ff0000;
+  font-size: 12px; }
+
 .p-article-link {
   font-size: 16px;
   color: #0066FF;
@@ -220,3 +230,14 @@ body {
 
 .u-flex {
   display: flex; }
+
+.u-btn {
+  border: none;
+  background: #FFFFFF;
+  color: #32BAFF;
+  width: 120px;
+  height: 24px;
+  margin-bottom: 16px; }
+  .u-btn:hover {
+    cursor: pointer;
+    opacity: .75; }

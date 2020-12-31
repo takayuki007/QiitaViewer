@@ -1,4 +1,8 @@
 //メイン部分のウラッパー
 .c-wrapper{
   margin-top: $margin-ll;
+
+  &:last-child{
+    margin-bottom: 60px;
+  }
 }

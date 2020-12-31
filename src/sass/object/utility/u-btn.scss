@@ -1,0 +1,15 @@
+//TOPページのボタン
+.u-btn{
+  border: none;
+  background: $white;
+  color: $light-blue;
+  //font-weight: bold;
+  width: 120px;
+  height: 24px;
+  margin-bottom: $margin-s;
+
+  &:hover{
+    cursor: pointer;
+    opacity: .75;
+  }
+}
