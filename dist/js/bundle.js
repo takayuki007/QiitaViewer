@@ -1214,7 +1214,13 @@ new _vue2.default({
         //存在しないユーザーの場合にアナウンスするため、空ではなくあえて初期状態は1を入れておく。
         datas: 1,
         message: '',
-        article: ''
+        title: '',
+        article: '',
+        tag: '',
+        postMessage: '',
+        yourToken: '',
+        resArticles: []
+
     },
     methods: {
         requestQiitaApi: function requestQiitaApi() {
@@ -1231,6 +1237,55 @@ new _vue2.default({
                     _this.datas = res.data;
                 }).catch(function (res) {
                     console.error(res);
+                });
+            }
+        },
+        postArticleApi: function postArticleApi() {
+            var _this2 = this;
+
+            if (this.yourToken === '' || this.title === '' || this.tag === '' || this.article === '') {
+                this.postMessage = '全て入力必須です。';
+            } else {
+                this.postMessage = '';
+                var ApiEndpoint = 'https://qiita.com/api/v2/items';
+                // const QiitaToken = this.yourToken;
+                var headers = {
+                    'Authorization': 'Bearer ' + this.yourToken,
+                    'Content-Type': 'application/json'
+                };
+                var params = {
+                    // body: this.article,
+                    // private: true,
+                    // title: 'test',
+                    // tags: [
+                    //     {
+                    //         name: 'hoge',
+                    //         versions: []
+                    //     }
+                    // ]
+                    body: this.article,
+                    coediting: false,
+                    group_url_name: 'dev',
+                    private: false,
+                    tags: [{
+                        name: this.tag,
+                        versions: []
+                    }],
+                    title: this.title,
+                    tweet: false
+                };
+                var json = JSON.stringify(params);
+                var jsonHeaders = JSON.stringify(headers);
+                console.log(json);
+                _axios2.default.post(ApiEndpoint, { json: json, headers: jsonHeaders }).then(function (res) {
+                    _this2.resArticles = res.data;
+                    console.log(_this2.resArticles);
+                }).catch(function (error) {
+                    // console.error(res);
+                    console.log(error);
+                    if (error) {
+                        _this2.postMessage = ' エラーが発生しました。後ほど再度お試しください。';
+                    }
                 });
             }
         }

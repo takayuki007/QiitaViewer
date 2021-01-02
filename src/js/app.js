@@ -16,7 +16,13 @@ new Vue({
         //存在しないユーザーの場合にアナウンスするため、空ではなくあえて初期状態は1を入れておく。
         datas: 1,
         message: '',
-        article: ''
+        title: '',
+        article: '',
+        tag: '',
+        postMessage: '',
+        yourToken: '',
+        resArticles: [],
+
     },
     methods: {
         requestQiitaApi: function (){
@@ -33,6 +39,57 @@ new Vue({
                     })
                     .catch((res)=>{
                         console.error(res);
+                    })
+            }
+        },
+        postArticleApi: function (){
+            if (this.yourToken === '' || this.title === '' || this.tag === '' || this.article === ''){
+                this.postMessage = '全て入力必須です。'
+            }else{
+                this.postMessage = '';
+                const ApiEndpoint = 'https://qiita.com/api/v2/items';
+                // const QiitaToken = this.yourToken;
+                const headers = {
+                    'Authorization' : `Bearer ${this.yourToken}`,
+                    'Content-Type': 'application/json'
+                }
+                const params = {
+                    // body: this.article,
+                    // private: true,
+                    // title: 'test',
+                    // tags: [
+                    //     {
+                    //         name: 'hoge',
+                    //         versions: []
+                    //     }
+                    // ]
+                    body: this.article,
+                    coediting: false,
+                    group_url_name: 'dev',
+                    private: false,
+                    tags: [
+                        {
+                            name: this.tag,
+                            versions: []
+                        }
+                    ],
+                    title: this.title,
+                    tweet: false
+                }
+                const json = JSON.stringify(params);
+                const jsonHeaders = JSON.stringify(headers);
+                console.log(json);
+                axios.post(ApiEndpoint,{json: json, headers: jsonHeaders})
+                    .then((res)=> {
+                        this.resArticles = res.data;
+                        console.log(this.resArticles);
+                    })
+                    .catch(error=>{
+                        // console.error(res);
+                        console.log(error);
+                        if (error){
+                            this.postMessage = ' エラーが発生しました。後ほど再度お試しください。';
+                        }
                     })
             }
         },

@@ -33,7 +33,7 @@
 
 
         <div class="c-wrapper">
-            <ul class="c-listItem"  v-if="datas.length">
+            <ul class="c-listItem" v-if="datas.length">
                 <h2 class="c-heading">検索結果</h2>
                 <li class="c-item" v-for="data in datas">
                     <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>

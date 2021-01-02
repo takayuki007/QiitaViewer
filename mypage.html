@@ -16,46 +16,65 @@
         </ul>
     </div>
 </header>
-<main class="l-main c-site-width">
+<main class="l-main c-site-width" id="app">
+    <div class="c-wrapper">
+        <div class="c-searchForm">
+            <p class="c-title p-textWhite">Get Your Qiita's Article</p>
+            <div class="c-inputArea">
+                <i class="fas fa-search"></i>
+                <input type="text" class="c-inputText" v-model="userID" placeholder="ここにあなたのユーザーIDを入力">
+                <p class="c-errorText" v-show="message">{{ message }}</p>
+            </div>
+            <button class="u-btn" v-on:click="requestQiitaApi">検索</button>
+            <p class="c-smallText u-smallText">ユーザーIDでQiitaの記事を検索できます。</p>
+        </div>
+    </div>
     <div class="c-wrapper u-flex">
         <div class="l-mainColumn">
-            <h2 class="c-heading">記事一覧</h2>
-            <ul class="c-listItem">
-                <li class="c-item">
-                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>
+            <h2 class="c-heading">あなたの記事一覧</h2>
+            <ul class="c-listItem" v-if="datas.length">
+                <li class="c-item" v-for="data in datas">
+                    <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>
                     <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>
+                        <a v-bind:href="data['url']" class="c-link p-article-link" target="_blank">{{ data['title']}}</a>
                     </h3>
                 </li>
-                <li class="c-item">
-                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
-                <li class="c-item">
-                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
-                <li class="c-item">
-                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>
-                    </h3>
-                </li>
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
+<!--                <li class="c-item">-->
+<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
+<!--                    <h3 class="c-articleTitle">-->
+<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
+<!--                    </h3>-->
+<!--                </li>-->
             </ul>
         </div>
         <div class="l-sideColumn">
             <h2 class="c-heading">記事投稿</h2>
-            <form action="" class="c-postForm" method="post">
-                <p class="c-smallText">txtファイル形式でアップロード</p>
-                <input type="file" class="c-inputFile" value="">
-                <input type="submit" class="c-btn" value="投稿">
-            </form>
+            <div class="c-postForm">
+<!--                <p class="c-smallText">txtファイル形式でアップロード</p>-->
+<!--                <input type="file" class="c-inputFile" value="">-->
+<!--                <input type="text" class="c-inputFile" v-model="yourID" placeholder="あなたのQiitaIDを入力">-->
+                <input type="text" class="c-inputPost" v-model="yourToken" placeholder="あなたのトークンを入力">
+                <input type="text" class="c-inputPost" v-model="title" placeholder="記事タイトルを入力">
+                <input type="text" class="c-inputPost" v-model="tag" placeholder="ここにタグを入力">
+                <textarea name="articleArea" id="" cols="30" rows="10" placeholder="ここに記事内容を入力" v-model="article" class="c-inputArticle"></textarea>
+                <p class="c-errorText" v-show="postMessage">{{ postMessage }}</p>
+                <button type="submit" class="c-btn" v-on:click="postArticleApi">投稿</button>
+            </div>
         </div>
     </div>
 </main>
+<script src="dist/js/bundle.js"></script>
 </body>
 </html>

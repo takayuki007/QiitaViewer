@@ -177,9 +177,9 @@ body {
 .c-postForm {
   background: #FFFFFF;
   width: 100%;
-  height: 240px;
+  height: auto;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 16px;
   box-shadow: 2px 2px 4px #999999;
   display: flex;
   flex-direction: column;
@@ -197,7 +197,22 @@ body {
 
 .c-errorText {
   color: #ff0000;
-  font-size: 12px; }
+  font-size: 12px;
+  margin-bottom: 8px; }
+
+.c-inputPost {
+  margin-bottom: 8px;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 8px; }
+
+.c-inputArticle {
+  margin-bottom: 8px;
+  width: 100%;
+  height: 240px;
+  box-sizing: border-box;
+  padding: 8px; }
 
 .p-article-link {
   font-size: 16px;
