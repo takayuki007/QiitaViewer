@@ -1199,14 +1199,6 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// window.vue = require('vue');
-//
-// vue.component('search-component', require('./components/searchComponent.vue').default);
-//
-// const app = new Vue({
-//     el: '#app',
-// });
-//
 new _vue2.default({
     el: '#app',
     data: {
@@ -1248,21 +1240,11 @@ new _vue2.default({
             } else {
                 this.postMessage = '';
                 var ApiEndpoint = 'https://qiita.com/api/v2/items';
-                // const QiitaToken = this.yourToken;
                 var headers = {
                     'Authorization': 'Bearer ' + this.yourToken,
                     'Content-Type': 'application/json'
                 };
                 var params = {
-                    // body: this.article,
-                    // private: true,
-                    // title: 'test',
-                    // tags: [
-                    //     {
-                    //         name: 'hoge',
-                    //         versions: []
-                    //     }
-                    // ]
                     body: this.article,
                     coediting: false,
                     group_url_name: 'dev',
@@ -1276,30 +1258,15 @@ new _vue2.default({
                 };
                 var json = JSON.stringify(params);
                 var jsonHeaders = JSON.stringify(headers);
-                console.log(json);
                 _axios2.default.post(ApiEndpoint, { json: json, headers: jsonHeaders }).then(function (res) {
                     _this2.resArticles = res.data;
-                    console.log(_this2.resArticles);
                 }).catch(function (error) {
-                    // console.error(res);
-                    console.log(error);
                     if (error) {
                         _this2.postMessage = ' エラーが発生しました。後ほど再度お試しください。';
                     }
                 });
             }
         }
-        // requestQiitaArticle: function (id){
-        //     console.log(id);
-        //     axios.get(`https://qiita.com/api/v2/items/${id}`)
-        //         .then((res)=> {
-        //             this.article = res.data;
-        //         })
-        //         .catch((res)=>{
-        //             console.error(res);
-        //         })
-        //
-        // }
     }
 });
 

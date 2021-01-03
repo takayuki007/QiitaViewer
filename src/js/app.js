@@ -1,11 +1,3 @@
-// window.vue = require('vue');
-//
-// vue.component('search-component', require('./components/searchComponent.vue').default);
-//
-// const app = new Vue({
-//     el: '#app',
-// });
-//
 import Vue from 'vue';
 import axios from 'axios';
 
@@ -48,21 +40,11 @@ new Vue({
             }else{
                 this.postMessage = '';
                 const ApiEndpoint = 'https://qiita.com/api/v2/items';
-                // const QiitaToken = this.yourToken;
                 const headers = {
                     'Authorization' : `Bearer ${this.yourToken}`,
                     'Content-Type': 'application/json'
                 }
                 const params = {
-                    // body: this.article,
-                    // private: true,
-                    // title: 'test',
-                    // tags: [
-                    //     {
-                    //         name: 'hoge',
-                    //         versions: []
-                    //     }
-                    // ]
                     body: this.article,
                     coediting: false,
                     group_url_name: 'dev',
@@ -78,31 +60,16 @@ new Vue({
                 }
                 const json = JSON.stringify(params);
                 const jsonHeaders = JSON.stringify(headers);
-                console.log(json);
                 axios.post(ApiEndpoint,{json: json, headers: jsonHeaders})
                     .then((res)=> {
                         this.resArticles = res.data;
-                        console.log(this.resArticles);
                     })
                     .catch(error=>{
-                        // console.error(res);
-                        console.log(error);
                         if (error){
                             this.postMessage = ' エラーが発生しました。後ほど再度お試しください。';
                         }
                     })
             }
         },
-        // requestQiitaArticle: function (id){
-        //     console.log(id);
-        //     axios.get(`https://qiita.com/api/v2/items/${id}`)
-        //         .then((res)=> {
-        //             this.article = res.data;
-        //         })
-        //         .catch((res)=>{
-        //             console.error(res);
-        //         })
-        //
-        // }
     }
 })

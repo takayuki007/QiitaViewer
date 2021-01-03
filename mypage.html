@@ -25,8 +25,8 @@
                 <input type="text" class="c-inputText" v-model="userID" placeholder="ここにあなたのユーザーIDを入力">
                 <p class="c-errorText" v-show="message">{{ message }}</p>
             </div>
-            <button class="u-btn" v-on:click="requestQiitaApi">検索</button>
-            <p class="c-smallText u-smallText">ユーザーIDでQiitaの記事を検索できます。</p>
+            <button class="u-btn" v-on:click="requestQiitaApi">表示</button>
+            <p class="c-smallText u-smallText">あなたのIDでQiitaの記事を表示できます。</p>
         </div>
     </div>
     <div class="c-wrapper u-flex">
@@ -39,32 +39,11 @@
                         <a v-bind:href="data['url']" class="c-link p-article-link" target="_blank">{{ data['title']}}</a>
                     </h3>
                 </li>
-<!--                <li class="c-item">-->
-<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
-<!--                    <h3 class="c-articleTitle">-->
-<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
-<!--                    </h3>-->
-<!--                </li>-->
-<!--                <li class="c-item">-->
-<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
-<!--                    <h3 class="c-articleTitle">-->
-<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
-<!--                    </h3>-->
-<!--                </li>-->
-<!--                <li class="c-item">-->
-<!--                    <p class="c-smallText">m_takayuki007が2020/12/24に投稿</p>-->
-<!--                    <h3 class="c-articleTitle">-->
-<!--                        <a href="page.html" class="c-link">[HTML]HTMLの基本</a>-->
-<!--                    </h3>-->
-<!--                </li>-->
             </ul>
         </div>
         <div class="l-sideColumn">
             <h2 class="c-heading">記事投稿</h2>
             <div class="c-postForm">
-<!--                <p class="c-smallText">txtファイル形式でアップロード</p>-->
-<!--                <input type="file" class="c-inputFile" value="">-->
-<!--                <input type="text" class="c-inputFile" v-model="yourID" placeholder="あなたのQiitaIDを入力">-->
                 <input type="text" class="c-inputPost" v-model="yourToken" placeholder="あなたのトークンを入力">
                 <input type="text" class="c-inputPost" v-model="title" placeholder="記事タイトルを入力">
                 <input type="text" class="c-inputPost" v-model="tag" placeholder="ここにタグを入力">
