@@ -21,7 +21,6 @@ gulp.task('browser-sync', function() {
     server: {
       baseDir: "./",
       index: "index.html",
-      page: "page.html",
       mypage: "mypage.html"
     }
   });

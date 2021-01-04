@@ -18,34 +18,45 @@
     </header>
 
     <main class="l-main c-site-width" id="app">
-        <div class="c-wrapper">
-            <div class="c-searchForm">
-                <p class="c-title p-textWhite">Get Qiita's Article</p>
-                <div class="c-inputArea">
-                    <i class="fas fa-search"></i>
-                    <input type="text" class="c-inputText" v-model="userID" placeholder="ここにユーザーIDを入力">
-                    <p class="c-errorText" v-show="message">{{ message }}</p>
+<!--        検索機能と結果表示部分-->
+        <div v-if="articleFlg === false">
+            <div class="c-wrapper">
+                <div class="c-searchForm">
+                    <p class="c-title p-textWhite">Get Qiita's Article</p>
+                    <div class="c-inputArea">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="c-inputText" v-model="userID" placeholder="ここにユーザーIDを入力">
+                        <p class="c-errorText" v-show="message">{{ message }}</p>
+                    </div>
+                    <button class="u-btn" v-on:click="requestQiitaApi">検索</button>
+                    <p class="c-smallText u-smallText">ユーザーIDでQiitaの記事を検索できます。</p>
                 </div>
-                <button class="u-btn" v-on:click="requestQiitaApi">検索</button>
-                <p class="c-smallText u-smallText">ユーザーIDでQiitaの記事を検索できます。</p>
+            </div>
+
+
+            <div class="c-wrapper">
+                <ul class="c-listItem" v-if="datas.length">
+                    <h2 class="c-heading">検索結果</h2>
+                    <li class="c-item" v-for="data in datas">
+                        <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>
+                        <h3 class="c-articleTitle">
+                            <a class="c-link p-article-link" target="_blank" v-on:click="gotoArticle(data['id'])">{{ data['title']}}</a>
+                        </h3>
+                    </li>
+                </ul>
+                <ul class="c-listItem"  v-if="datas.length === 0">
+                    <h2 class="c-heading">検索結果</h2>
+                    <p class="regularText">このユーザーは存在しません。</p>
+                </ul>
             </div>
         </div>
-
-
-        <div class="c-wrapper">
-            <ul class="c-listItem" v-if="datas.length">
-                <h2 class="c-heading">検索結果</h2>
-                <li class="c-item" v-for="data in datas">
-                    <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>
-                    <h3 class="c-articleTitle">
-                        <a v-bind:href="data['url']" class="c-link p-article-link" target="_blank">{{ data['title']}}</a>
-                    </h3>
-                </li>
-            </ul>
-            <ul class="c-listItem"  v-if="datas.length === 0">
-                <h2 class="c-heading">検索結果</h2>
-                <p class="regularText">このユーザーは存在しません。</p>
-            </ul>
+        <div v-if="articleFlg === true">
+<!--            個別記事表示部分-->
+            <div class="c-wrapper">
+                <div class="c-articleArea" v-html="article">
+                    {{ article }}
+                </div>
+            </div>
         </div>
     </main>
     <script src="dist/js/bundle.js"></script>

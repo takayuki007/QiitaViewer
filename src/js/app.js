@@ -1,22 +1,28 @@
 import Vue from 'vue';
 import axios from 'axios';
+import marked from 'marked';
 
+//APIの詳細はQiitaの記事を参照
+//https://qiita.com/api/v2/docs
 new Vue({
     el: '#app',
     data: {
         userID: '',
         //存在しないユーザーの場合にアナウンスするため、空ではなくあえて初期状態は1を入れておく。
         datas: 1,
+        //エラーメッセージを入れる
         message: '',
-        title: '',
-        article: '',
-        tag: '',
-        postMessage: '',
         yourToken: '',
+        title: '',
+        tag: '',
+        article: '',
+        //エラーメッセージを入れる（エラー内容が違うため、別で設ける）
+        postMessage: '',
         resArticles: [],
-
+        articleFlg: false
     },
     methods: {
+        //該当ユーザーの記事一覧を取り寄せる。
         requestQiitaApi: function (){
             if (this.userID === ''){
                 this.message = '入力フォームが空です。'
@@ -34,6 +40,7 @@ new Vue({
                     })
             }
         },
+        //記事を投稿する
         postArticleApi: function (){
             if (this.yourToken === '' || this.title === '' || this.tag === '' || this.article === ''){
                 this.postMessage = '全て入力必須です。'
@@ -71,5 +78,17 @@ new Vue({
                     })
             }
         },
+        //個別記事を表示する
+        gotoArticle: function (id){
+            axios.get(`https://qiita.com/api/v2/items/${id}`)
+                .then((res)=>{
+                    this.article = res.data;
+                    //帰ってきた記事はマークダウン形式なので、HTMLに変換する
+                    this.article = marked(this.article['body']);
+                    //記事表示を行う。
+                    this.articleFlg = true;
+                })
+
+        }
     }
 })
