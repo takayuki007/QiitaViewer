@@ -1228,8 +1228,12 @@ new _vue2.default({
             var _this = this;
 
             if (this.userID === '') {
+                //再検索時に、「このユーザーは存在しません」という文言を消すため。
+                this.datas = 0;
                 this.message = '入力フォームが空です。';
             } else if (!this.userID.match(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/)) {
+                //再検索時に、「このユーザーは存在しません」という文言を消すため。
+                this.datas = 0;
                 this.message = '入力フォームには半角英数字記号のみご利用いただけます。';
             } else {
                 //messageに何か入っているといけないので、空にする。
@@ -1238,6 +1242,7 @@ new _vue2.default({
                     _this.datas = res.data;
                 }).catch(function (error) {
                     if (error) {
+                        _this.datas = 0;
                         _this.message = ' エラーが発生しました。後ほど再度お試しください。';
                     }
                 });

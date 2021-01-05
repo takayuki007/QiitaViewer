@@ -40,7 +40,7 @@
                     <li class="c-item" v-for="data in datas">
                         <p class="c-smallText p-smallText-gray">{{ data.user['id']}}が{{ new Date(data['created_at']).toLocaleDateString() }}に投稿</p>
                         <h3 class="c-articleTitle">
-                            <a class="c-link p-article-link" target="_blank" v-on:click="gotoArticle(data['id'])">{{ data['title']}}</a>
+                            <a class="c-link p-article-link" v-on:click="gotoArticle(data['id'])">{{ data['title']}}</a>
                         </h3>
                     </li>
                 </ul>
