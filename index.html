@@ -54,6 +54,7 @@
 <!--            個別記事表示部分-->
             <div class="c-wrapper">
                 <div class="c-articleArea" v-html="article">
+                    <p class="c-errorText" v-show="message">{{ message }}</p>
                     {{ article }}
                 </div>
             </div>

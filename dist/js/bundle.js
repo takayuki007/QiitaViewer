@@ -1236,8 +1236,10 @@ new _vue2.default({
                 this.message = '';
                 _axios2.default.get('https://qiita.com/api/v2/users/' + this.userID + '/items?per_page=100').then(function (res) {
                     _this.datas = res.data;
-                }).catch(function (res) {
-                    console.error(res);
+                }).catch(function (error) {
+                    if (error) {
+                        _this.message = ' エラーが発生しました。後ほど再度お試しください。';
+                    }
                 });
             }
         },
@@ -1248,6 +1250,7 @@ new _vue2.default({
             if (this.yourToken === '' || this.title === '' || this.tag === '' || this.article === '') {
                 this.postMessage = '全て入力必須です。';
             } else {
+                //エラーメッセージに何か入っているといけないので削除する。
                 this.postMessage = '';
                 var ApiEndpoint = 'https://qiita.com/api/v2/items';
                 var headers = {
@@ -1287,6 +1290,10 @@ new _vue2.default({
                 _this3.article = (0, _marked2.default)(_this3.article['body']);
                 //記事表示を行う。
                 _this3.articleFlg = true;
+            }).catch(function (error) {
+                if (error) {
+                    _this3.message = ' エラーが発生しました。後ほど再度お試しください。';
+                }
             });
         }
     }

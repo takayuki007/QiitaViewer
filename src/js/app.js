@@ -35,8 +35,10 @@ new Vue({
                     .then((res)=> {
                         this.datas = res.data;
                     })
-                    .catch((res)=>{
-                        console.error(res);
+                    .catch(error=>{
+                        if (error){
+                            this.message = ' エラーが発生しました。後ほど再度お試しください。';
+                        }
                     })
             }
         },
@@ -45,6 +47,7 @@ new Vue({
             if (this.yourToken === '' || this.title === '' || this.tag === '' || this.article === ''){
                 this.postMessage = '全て入力必須です。'
             }else{
+                //エラーメッセージに何か入っているといけないので削除する。
                 this.postMessage = '';
                 const ApiEndpoint = 'https://qiita.com/api/v2/items';
                 const headers = {
@@ -88,7 +91,11 @@ new Vue({
                     //記事表示を行う。
                     this.articleFlg = true;
                 })
-
+                .catch(error=>{
+                    if (error){
+                        this.message = ' エラーが発生しました。後ほど再度お試しください。';
+                    }
+                })
         }
     }
 })
